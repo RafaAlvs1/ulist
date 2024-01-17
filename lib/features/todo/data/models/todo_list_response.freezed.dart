@@ -95,7 +95,8 @@ class __$$TodoListResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$TodoListResponseImpl extends _TodoListResponse {
   const _$TodoListResponseImpl({final List<DataTodo>? data})
       : _data = data,

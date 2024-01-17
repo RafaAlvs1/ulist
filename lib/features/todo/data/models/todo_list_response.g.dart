@@ -17,7 +17,7 @@ _$TodoListResponseImpl _$$TodoListResponseImplFromJson(
 Map<String, dynamic> _$$TodoListResponseImplToJson(
         _$TodoListResponseImpl instance) =>
     <String, dynamic>{
-      'data': instance.data,
+      'data': instance.data?.map((e) => e.toJson()).toList(),
     };
 
 _$DataTodoImpl _$$DataTodoImplFromJson(Map<String, dynamic> json) =>

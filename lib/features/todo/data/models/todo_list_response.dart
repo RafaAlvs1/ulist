@@ -8,6 +8,7 @@ part 'todo_list_response.g.dart';
 class TodoListResponse with _$TodoListResponse {
   const TodoListResponse._();
 
+  @JsonSerializable(explicitToJson: true)
   const factory TodoListResponse({
     List<DataTodo>? data,
   }) = _TodoListResponse;

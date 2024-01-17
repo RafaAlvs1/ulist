@@ -8,10 +8,13 @@ import 'dart:async' as _i6;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:flutter/foundation.dart' as _i4;
 import 'package:flutter/src/widgets/framework.dart' as _i3;
-import 'package:flutter/src/widgets/notification_listener.dart' as _i10;
+import 'package:flutter/src/widgets/notification_listener.dart' as _i12;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:ulist_project/core/errors.dart' as _i7;
 import 'package:ulist_project/core/usecase.dart' as _i9;
+import 'package:ulist_project/features/todo/data/datasources/todo_remote_datasource.dart'
+    as _i10;
+import 'package:ulist_project/features/todo/data/models.dart' as _i11;
 import 'package:ulist_project/features/todo/domain/entities.dart' as _i8;
 import 'package:ulist_project/features/todo/domain/repositories/todo_repository.dart'
     as _i5;
@@ -114,6 +117,35 @@ class MockITodoRepository extends _i1.Mock implements _i5.ITodoRepository {
       ) as _i6.Future<_i2.Either<_i7.IFailure, _i8.TodoListEntity>>);
 }
 
+/// A class which mocks [ITodoRemoteDatasource].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockITodoRemoteDatasource extends _i1.Mock
+    implements _i10.ITodoRemoteDatasource {
+  MockITodoRemoteDatasource() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i6.Future<_i2.Either<_i7.IFailure, _i11.TodoListResponse>> list(
+          _i9.NoParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #list,
+          [params],
+        ),
+        returnValue:
+            _i6.Future<_i2.Either<_i7.IFailure, _i11.TodoListResponse>>.value(
+                _FakeEither_0<_i7.IFailure, _i11.TodoListResponse>(
+          this,
+          Invocation.method(
+            #list,
+            [params],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.IFailure, _i11.TodoListResponse>>);
+}
+
 /// A class which mocks [BuildContext].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -194,7 +226,7 @@ class MockBuildContext extends _i1.Mock implements _i3.BuildContext {
       );
 
   @override
-  void dispatchNotification(_i10.Notification? notification) =>
+  void dispatchNotification(_i12.Notification? notification) =>
       super.noSuchMethod(
         Invocation.method(
           #dispatchNotification,
