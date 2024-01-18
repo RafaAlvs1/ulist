@@ -3,9 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ulist_project/core/router.dart';
 import 'package:ulist_project/features/todo.dart';
 
-class TodoListView extends StatelessWidget {
+class TodoListView extends StatefulWidget {
   const TodoListView({Key? key}) : super(key: key);
 
+  @override
+  State<TodoListView> createState() => _TodoListViewState();
+}
+
+class _TodoListViewState extends State<TodoListView> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TodoListCubit, TodoListState>(
@@ -76,13 +81,16 @@ class TodoListView extends StatelessWidget {
               ],
             ),
           ),
-          IconButton(
-            icon: const Icon(
-              Icons.cancel,
-              color: Colors.red,
+          if (todo.id != null)
+            IconButton(
+              icon: const Icon(
+                Icons.cancel,
+                color: Colors.red,
+              ),
+              onPressed: () {
+                context.read<TodoListCubit>().delete(todo.id!);
+              },
             ),
-            onPressed: () {},
-          ),
         ],
       ),
     );

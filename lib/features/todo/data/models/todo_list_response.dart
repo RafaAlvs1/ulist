@@ -33,7 +33,7 @@ class TodoListResponse with _$TodoListResponse {
 @freezed
 class DataTodo with _$DataTodo {
   const factory DataTodo({
-    int? id,
+    String? id,
     String? title,
     String? description,
   }) = _DataTodo;

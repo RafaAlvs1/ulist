@@ -27,8 +27,9 @@ void _todo() {
   /// Usecases
   sl.registerLazySingleton(() => GetTodoListUsecase(sl()));
   sl.registerLazySingleton(() => SaveTodoUsecase(sl()));
+  sl.registerLazySingleton(() => DeleteTodoUsecase(sl()));
 
   /// Cubits
-  sl.registerFactory<TodoListCubit>(() => TodoListCubit(sl()));
+  sl.registerFactory<TodoListCubit>(() => TodoListCubit(sl(), sl()));
   sl.registerFactory<EditTodoCubit>(() => EditTodoCubit(sl()));
 }

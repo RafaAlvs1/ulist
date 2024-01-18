@@ -15,7 +15,7 @@ class TodoEntity extends Equatable with _$TodoEntity {
   const TodoEntity._();
 
   const factory TodoEntity({
-    int? id,
+    String? id,
     String? title,
     String? description,
   }) = _TodoEntity;

@@ -22,7 +22,7 @@ Map<String, dynamic> _$$TodoListResponseImplToJson(
 
 _$DataTodoImpl _$$DataTodoImplFromJson(Map<String, dynamic> json) =>
     _$DataTodoImpl(
-      id: json['id'] as int?,
+      id: json['id'] as String?,
       title: json['title'] as String?,
       description: json['description'] as String?,
     );

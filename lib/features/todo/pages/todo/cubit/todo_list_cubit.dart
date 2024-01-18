@@ -9,9 +9,13 @@ part 'todo_list_cubit.freezed.dart';
 part 'todo_list_state.dart';
 
 class TodoListCubit extends Cubit<TodoListState> {
-  final GetTodoListUsecase _usecase;
+  final GetTodoListUsecase _listUsecase;
+  final DeleteTodoUsecase _deleteUsecase;
 
-  TodoListCubit(this._usecase) : super(const _Init());
+  TodoListCubit(
+    this._listUsecase,
+    this._deleteUsecase,
+  ) : super(const _Init());
 
   bool loading = false;
   List<TodoEntity> _list = [];
@@ -25,7 +29,7 @@ class TodoListCubit extends Cubit<TodoListState> {
     emit(const _Loading());
     loading = true;
 
-    final data = await _usecase(const NoParams());
+    final data = await _listUsecase(const NoParams());
 
     data.fold(
       (l) {
@@ -40,6 +44,31 @@ class TodoListCubit extends Cubit<TodoListState> {
       (r) {
         loading = false;
         _list = r.data?.toList() ?? [];
+        emit(const _Success());
+      },
+    );
+  }
+
+  Future<void> delete(String id) async {
+    emit(const _Loading());
+    loading = true;
+    final data = await _deleteUsecase(id);
+
+    data.fold(
+      (l) {
+        loading = false;
+        if (l is ServerFailure) {
+          emit(_Failure(
+            l.title,
+            l.message ?? '',
+          ));
+        }
+      },
+      (r) {
+        loading = false;
+        if (r) {
+          _list.removeWhere((element) => element.id == id);
+        }
         emit(const _Success());
       },
     );

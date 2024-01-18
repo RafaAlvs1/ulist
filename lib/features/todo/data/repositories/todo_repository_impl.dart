@@ -34,4 +34,14 @@ class TodoRepositoryImpl implements ITodoRepository {
         (response) => Right(response),
       );
   }
+
+  @override
+  Future<Either<IFailure, bool>> deleteTodo(String params) async {
+    final response = await _datasource.delete(params);
+
+    return response.fold(
+          (failure) => Left(failure),
+          (response) => Right(response),
+    );
+  }
 }

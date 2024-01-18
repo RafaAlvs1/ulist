@@ -6,7 +6,7 @@ part 'save_todo_params.g.dart';
 @freezed
 class SaveTodoParams with _$SaveTodoParams {
   const factory SaveTodoParams({
-    int? id,
+    String? id,
     required String title,
     required String description,
   }) = _SaveTodoParams;

@@ -170,7 +170,7 @@ DataTodo _$DataTodoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DataTodo {
-  int? get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
 
@@ -185,7 +185,7 @@ abstract class $DataTodoCopyWith<$Res> {
   factory $DataTodoCopyWith(DataTodo value, $Res Function(DataTodo) then) =
       _$DataTodoCopyWithImpl<$Res, DataTodo>;
   @useResult
-  $Res call({int? id, String? title, String? description});
+  $Res call({String? id, String? title, String? description});
 }
 
 /// @nodoc
@@ -209,7 +209,7 @@ class _$DataTodoCopyWithImpl<$Res, $Val extends DataTodo>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -230,7 +230,7 @@ abstract class _$$DataTodoImplCopyWith<$Res>
       __$$DataTodoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? title, String? description});
+  $Res call({String? id, String? title, String? description});
 }
 
 /// @nodoc
@@ -252,7 +252,7 @@ class __$$DataTodoImplCopyWithImpl<$Res>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -274,7 +274,7 @@ class _$DataTodoImpl implements _DataTodo {
       _$$DataTodoImplFromJson(json);
 
   @override
-  final int? id;
+  final String? id;
   @override
   final String? title;
   @override
@@ -316,7 +316,7 @@ class _$DataTodoImpl implements _DataTodo {
 
 abstract class _DataTodo implements DataTodo {
   const factory _DataTodo(
-      {final int? id,
+      {final String? id,
       final String? title,
       final String? description}) = _$DataTodoImpl;
 
@@ -324,7 +324,7 @@ abstract class _DataTodo implements DataTodo {
       _$DataTodoImpl.fromJson;
 
   @override
-  int? get id;
+  String? get id;
   @override
   String? get title;
   @override

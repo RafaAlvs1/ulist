@@ -20,7 +20,7 @@ SaveTodoParams _$SaveTodoParamsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SaveTodoParams {
-  int? get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
 
@@ -36,7 +36,7 @@ abstract class $SaveTodoParamsCopyWith<$Res> {
           SaveTodoParams value, $Res Function(SaveTodoParams) then) =
       _$SaveTodoParamsCopyWithImpl<$Res, SaveTodoParams>;
   @useResult
-  $Res call({int? id, String title, String description});
+  $Res call({String? id, String title, String description});
 }
 
 /// @nodoc
@@ -60,7 +60,7 @@ class _$SaveTodoParamsCopyWithImpl<$Res, $Val extends SaveTodoParams>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -81,7 +81,7 @@ abstract class _$$SaveTodoParamsImplCopyWith<$Res>
       __$$SaveTodoParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String title, String description});
+  $Res call({String? id, String title, String description});
 }
 
 /// @nodoc
@@ -103,7 +103,7 @@ class __$$SaveTodoParamsImplCopyWithImpl<$Res>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -126,7 +126,7 @@ class _$SaveTodoParamsImpl implements _SaveTodoParams {
       _$$SaveTodoParamsImplFromJson(json);
 
   @override
-  final int? id;
+  final String? id;
   @override
   final String title;
   @override
@@ -169,7 +169,7 @@ class _$SaveTodoParamsImpl implements _SaveTodoParams {
 
 abstract class _SaveTodoParams implements SaveTodoParams {
   const factory _SaveTodoParams(
-      {final int? id,
+      {final String? id,
       required final String title,
       required final String description}) = _$SaveTodoParamsImpl;
 
@@ -177,7 +177,7 @@ abstract class _SaveTodoParams implements SaveTodoParams {
       _$SaveTodoParamsImpl.fromJson;
 
   @override
-  int? get id;
+  String? get id;
   @override
   String get title;
   @override

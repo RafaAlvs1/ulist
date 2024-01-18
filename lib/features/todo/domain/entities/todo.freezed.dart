@@ -143,7 +143,7 @@ abstract class _TodoListEntity implements TodoListEntity {
 
 /// @nodoc
 mixin _$TodoEntity {
-  int? get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
 
@@ -158,7 +158,7 @@ abstract class $TodoEntityCopyWith<$Res> {
           TodoEntity value, $Res Function(TodoEntity) then) =
       _$TodoEntityCopyWithImpl<$Res, TodoEntity>;
   @useResult
-  $Res call({int? id, String? title, String? description});
+  $Res call({String? id, String? title, String? description});
 }
 
 /// @nodoc
@@ -182,7 +182,7 @@ class _$TodoEntityCopyWithImpl<$Res, $Val extends TodoEntity>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -203,7 +203,7 @@ abstract class _$$TodoEntityImplCopyWith<$Res>
       __$$TodoEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? title, String? description});
+  $Res call({String? id, String? title, String? description});
 }
 
 /// @nodoc
@@ -225,7 +225,7 @@ class __$$TodoEntityImplCopyWithImpl<$Res>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -244,7 +244,7 @@ class _$TodoEntityImpl extends _TodoEntity {
   const _$TodoEntityImpl({this.id, this.title, this.description}) : super._();
 
   @override
-  final int? id;
+  final String? id;
   @override
   final String? title;
   @override
@@ -259,13 +259,13 @@ class _$TodoEntityImpl extends _TodoEntity {
 
 abstract class _TodoEntity extends TodoEntity {
   const factory _TodoEntity(
-      {final int? id,
+      {final String? id,
       final String? title,
       final String? description}) = _$TodoEntityImpl;
   const _TodoEntity._() : super._();
 
   @override
-  int? get id;
+  String? get id;
   @override
   String? get title;
   @override

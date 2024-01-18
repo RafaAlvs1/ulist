@@ -14,7 +14,6 @@ import '../../../../helpers/test_mock.mocks.dart';
 void main() {
   late MockITodoRemoteDatasource datasource;
   late TodoRepositoryImpl repository;
-  late TodoListEntity response;
 
   setUp(() async {
     TestWidgetsFlutterBinding.ensureInitialized();
@@ -85,6 +84,39 @@ void main() {
 
       // assert
       verify(datasource.save(params));
+      expect(result, equals(const Left(ServerFailure(message: ''))));
+    });
+  });
+
+  group("delete", () {
+    const params = "id";
+    const response = true;
+
+    test('should return true when call data is successful', () async {
+      // arrange
+      when(datasource.delete(params)).thenAnswer(
+        (_) async => const Right(response),
+      );
+
+      // act
+      final result = await repository.deleteTodo(params);
+
+      // assert
+      verify(datasource.delete(params));
+      expect(result, equals(const Right(response)));
+    });
+
+    test('should return server failure when call data is unsuccessful', () async {
+      // arrange
+      when(datasource.delete(params)).thenAnswer(
+        (_) async => const Left(ServerFailure(message: '')),
+      );
+
+      // act
+      final result = await repository.deleteTodo(params);
+
+      // assert
+      verify(datasource.delete(params));
       expect(result, equals(const Left(ServerFailure(message: ''))));
     });
   });

@@ -8,7 +8,7 @@ part of 'save_todo_params.dart';
 
 _$SaveTodoParamsImpl _$$SaveTodoParamsImplFromJson(Map<String, dynamic> json) =>
     _$SaveTodoParamsImpl(
-      id: json['id'] as int?,
+      id: json['id'] as String?,
       title: json['title'] as String,
       description: json['description'] as String,
     );

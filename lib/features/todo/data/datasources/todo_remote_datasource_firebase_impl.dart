@@ -13,16 +13,19 @@ class TodoRemoteDatasourceFirebaseImpl extends ITodoRemoteDatasource {
 
   @override
   Future<Either<IFailure, TodoListResponse>> list(NoParams params) async {
-    final response = await _client.getList(
-      ApiPath.todos,
-      converter: (response) => TodoListResponse.fromJson(response),
-    );
-    return response;
+    // TODO: implement save
+    throw UnimplementedError();
   }
 
   @override
   Future<Either<IFailure, bool>> save(SaveTodoParams params) {
     // TODO: implement save
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<IFailure, bool>> delete(String params) {
+    // TODO: implement delete
     throw UnimplementedError();
   }
 }

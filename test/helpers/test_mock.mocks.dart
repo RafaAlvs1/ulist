@@ -133,6 +133,23 @@ class MockITodoRepository extends _i1.Mock implements _i5.ITodoRepository {
           ),
         )),
       ) as _i6.Future<_i2.Either<_i7.IFailure, bool>>);
+
+  @override
+  _i6.Future<_i2.Either<_i7.IFailure, bool>> deleteTodo(String? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #deleteTodo,
+          [params],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.IFailure, bool>>.value(
+            _FakeEither_0<_i7.IFailure, bool>(
+          this,
+          Invocation.method(
+            #deleteTodo,
+            [params],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.IFailure, bool>>);
 }
 
 /// A class which mocks [ITodoRemoteDatasource].
@@ -175,6 +192,23 @@ class MockITodoRemoteDatasource extends _i1.Mock
           this,
           Invocation.method(
             #save,
+            [params],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.IFailure, bool>>);
+
+  @override
+  _i6.Future<_i2.Either<_i7.IFailure, bool>> delete(String? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #delete,
+          [params],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.IFailure, bool>>.value(
+            _FakeEither_0<_i7.IFailure, bool>(
+          this,
+          Invocation.method(
+            #delete,
             [params],
           ),
         )),
