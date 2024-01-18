@@ -10,12 +10,12 @@ import 'package:flutter/foundation.dart' as _i4;
 import 'package:flutter/src/widgets/framework.dart' as _i3;
 import 'package:flutter/src/widgets/notification_listener.dart' as _i12;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:ulist_project/core/errors.dart' as _i7;
-import 'package:ulist_project/core/usecase.dart' as _i9;
+import 'package:ulist_project/core/errors.dart' as _i9;
+import 'package:ulist_project/core/usecase.dart' as _i8;
 import 'package:ulist_project/features/todo/data/datasources/todo_remote_datasource.dart'
     as _i10;
 import 'package:ulist_project/features/todo/data/models.dart' as _i11;
-import 'package:ulist_project/features/todo/domain/entities.dart' as _i8;
+import 'package:ulist_project/features/todo/domain/entities.dart' as _i7;
 import 'package:ulist_project/features/todo/domain/repositories/todo_repository.dart'
     as _i5;
 
@@ -98,58 +98,49 @@ class MockITodoRepository extends _i1.Mock implements _i5.ITodoRepository {
   }
 
   @override
-  _i6.Future<_i2.Either<_i7.IFailure, _i8.TodoListEntity>> getTodoList(
-          _i9.NoParams? params) =>
+  _i6.Stream<_i7.TodoListEntity> getTodoList(_i8.NoParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #getTodoList,
           [params],
         ),
-        returnValue:
-            _i6.Future<_i2.Either<_i7.IFailure, _i8.TodoListEntity>>.value(
-                _FakeEither_0<_i7.IFailure, _i8.TodoListEntity>(
-          this,
-          Invocation.method(
-            #getTodoList,
-            [params],
-          ),
-        )),
-      ) as _i6.Future<_i2.Either<_i7.IFailure, _i8.TodoListEntity>>);
+        returnValue: _i6.Stream<_i7.TodoListEntity>.empty(),
+      ) as _i6.Stream<_i7.TodoListEntity>);
 
   @override
-  _i6.Future<_i2.Either<_i7.IFailure, bool>> saveTodo(
-          _i8.SaveTodoParams? params) =>
+  _i6.Future<_i2.Either<_i9.IFailure, bool>> saveTodo(
+          _i7.SaveTodoParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveTodo,
           [params],
         ),
-        returnValue: _i6.Future<_i2.Either<_i7.IFailure, bool>>.value(
-            _FakeEither_0<_i7.IFailure, bool>(
+        returnValue: _i6.Future<_i2.Either<_i9.IFailure, bool>>.value(
+            _FakeEither_0<_i9.IFailure, bool>(
           this,
           Invocation.method(
             #saveTodo,
             [params],
           ),
         )),
-      ) as _i6.Future<_i2.Either<_i7.IFailure, bool>>);
+      ) as _i6.Future<_i2.Either<_i9.IFailure, bool>>);
 
   @override
-  _i6.Future<_i2.Either<_i7.IFailure, bool>> deleteTodo(String? params) =>
+  _i6.Future<_i2.Either<_i9.IFailure, bool>> deleteTodo(String? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #deleteTodo,
           [params],
         ),
-        returnValue: _i6.Future<_i2.Either<_i7.IFailure, bool>>.value(
-            _FakeEither_0<_i7.IFailure, bool>(
+        returnValue: _i6.Future<_i2.Either<_i9.IFailure, bool>>.value(
+            _FakeEither_0<_i9.IFailure, bool>(
           this,
           Invocation.method(
             #deleteTodo,
             [params],
           ),
         )),
-      ) as _i6.Future<_i2.Either<_i7.IFailure, bool>>);
+      ) as _i6.Future<_i2.Either<_i9.IFailure, bool>>);
 }
 
 /// A class which mocks [ITodoRemoteDatasource].
@@ -162,57 +153,48 @@ class MockITodoRemoteDatasource extends _i1.Mock
   }
 
   @override
-  _i6.Future<_i2.Either<_i7.IFailure, _i11.TodoListResponse>> list(
-          _i9.NoParams? params) =>
+  _i6.Stream<_i11.TodoListResponse> list(_i8.NoParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #list,
           [params],
         ),
-        returnValue:
-            _i6.Future<_i2.Either<_i7.IFailure, _i11.TodoListResponse>>.value(
-                _FakeEither_0<_i7.IFailure, _i11.TodoListResponse>(
-          this,
-          Invocation.method(
-            #list,
-            [params],
-          ),
-        )),
-      ) as _i6.Future<_i2.Either<_i7.IFailure, _i11.TodoListResponse>>);
+        returnValue: _i6.Stream<_i11.TodoListResponse>.empty(),
+      ) as _i6.Stream<_i11.TodoListResponse>);
 
   @override
-  _i6.Future<_i2.Either<_i7.IFailure, bool>> save(_i8.SaveTodoParams? params) =>
+  _i6.Future<_i2.Either<_i9.IFailure, bool>> save(_i7.SaveTodoParams? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #save,
           [params],
         ),
-        returnValue: _i6.Future<_i2.Either<_i7.IFailure, bool>>.value(
-            _FakeEither_0<_i7.IFailure, bool>(
+        returnValue: _i6.Future<_i2.Either<_i9.IFailure, bool>>.value(
+            _FakeEither_0<_i9.IFailure, bool>(
           this,
           Invocation.method(
             #save,
             [params],
           ),
         )),
-      ) as _i6.Future<_i2.Either<_i7.IFailure, bool>>);
+      ) as _i6.Future<_i2.Either<_i9.IFailure, bool>>);
 
   @override
-  _i6.Future<_i2.Either<_i7.IFailure, bool>> delete(String? params) =>
+  _i6.Future<_i2.Either<_i9.IFailure, bool>> delete(String? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #delete,
           [params],
         ),
-        returnValue: _i6.Future<_i2.Either<_i7.IFailure, bool>>.value(
-            _FakeEither_0<_i7.IFailure, bool>(
+        returnValue: _i6.Future<_i2.Either<_i9.IFailure, bool>>.value(
+            _FakeEither_0<_i9.IFailure, bool>(
           this,
           Invocation.method(
             #delete,
             [params],
           ),
         )),
-      ) as _i6.Future<_i2.Either<_i7.IFailure, bool>>);
+      ) as _i6.Future<_i2.Either<_i9.IFailure, bool>>);
 }
 
 /// A class which mocks [BuildContext].

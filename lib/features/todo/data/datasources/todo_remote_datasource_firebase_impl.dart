@@ -12,7 +12,7 @@ class TodoRemoteDatasourceFirebaseImpl extends ITodoRemoteDatasource {
   TodoRemoteDatasourceFirebaseImpl(this._client);
 
   @override
-  Future<Either<IFailure, TodoListResponse>> list(NoParams params) async {
+  Stream<TodoListResponse> list(NoParams params) {
     // TODO: implement save
     throw UnimplementedError();
   }

@@ -17,46 +17,16 @@ class TodoListCubit extends Cubit<TodoListState> {
     this._deleteUsecase,
   ) : super(const _Init());
 
-  bool loading = false;
-  List<TodoEntity> _list = [];
-
-  List<TodoEntity> get list {
-    final items = _list.toList();
-    return items;
-  }
-
-  Future<void> fetch() async {
-    emit(const _Loading());
-    loading = true;
-
-    final data = await _listUsecase(const NoParams());
-
-    data.fold(
-      (l) {
-        loading = false;
-        if (l is ServerFailure) {
-          emit(_Failure(
-            l.title,
-            l.message ?? '',
-          ));
-        }
-      },
-      (r) {
-        loading = false;
-        _list = r.data?.toList() ?? [];
-        emit(const _Success());
-      },
-    );
+  Stream<List<TodoEntity>> todos() {
+    return _listUsecase(const NoParams()).map((event) => event.data ?? []);
   }
 
   Future<void> delete(String id) async {
     emit(const _Loading());
-    loading = true;
     final data = await _deleteUsecase(id);
 
     data.fold(
       (l) {
-        loading = false;
         if (l is ServerFailure) {
           emit(_Failure(
             l.title,
@@ -65,10 +35,6 @@ class TodoListCubit extends Cubit<TodoListState> {
         }
       },
       (r) {
-        loading = false;
-        if (r) {
-          _list.removeWhere((element) => element.id == id);
-        }
         emit(const _Success());
       },
     );

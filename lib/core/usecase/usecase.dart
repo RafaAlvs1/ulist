@@ -6,6 +6,10 @@ abstract class IUsecase<Output, Input> {
   Future<Either<IFailure, Output>> call(Input params);
 }
 
+abstract class IStreamUsecase<T, Parameters> {
+  Stream<T> call(Parameters params);
+}
+
 class NoParams extends Equatable {
   const NoParams();
   @override

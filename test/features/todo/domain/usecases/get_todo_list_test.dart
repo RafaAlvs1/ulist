@@ -1,4 +1,5 @@
-import 'package:dartz/dartz.dart';
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:ulist_project/core/usecase.dart';
@@ -22,12 +23,16 @@ void main() {
   });
 
   test('should get a todo list from the repository', () async {
-    when(repository.getTodoList(params)).thenAnswer((_) async => Right(response));
+    // arrange
+    final controller = StreamController<TodoListEntity>();
+    when(repository.getTodoList(params)).thenAnswer((_) => controller.stream);
 
-    final result = await usecase(params);
+    // act
+    usecase(params);
+    controller.add(response);
 
-    expect(result, equals(Right(response)));
-
+    // assert
     verify(repository.getTodoList(params)).called(1);
+    expect(usecase(params), emitsInOrder([response]));
   });
 }

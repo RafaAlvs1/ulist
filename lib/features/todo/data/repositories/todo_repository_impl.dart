@@ -11,18 +11,8 @@ class TodoRepositoryImpl implements ITodoRepository {
   const TodoRepositoryImpl(this._datasource);
 
   @override
-  Future<Either<IFailure, TodoListEntity>> getTodoList(NoParams params) async {
-    final response = await _datasource.list(params);
-
-    return response.fold(
-      (failure) => Left(failure),
-      (response) {
-        if (response.data?.isEmpty ?? true) {
-          return Left(NoDataFailure());
-        }
-        return Right(response.toEntity());
-      },
-    );
+  Stream<TodoListEntity> getTodoList(NoParams params) {
+    return _datasource.list(params).map((event) => event.toEntity());
   }
 
   @override

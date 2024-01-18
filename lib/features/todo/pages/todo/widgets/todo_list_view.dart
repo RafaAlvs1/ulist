@@ -13,9 +13,10 @@ class TodoListView extends StatefulWidget {
 class _TodoListViewState extends State<TodoListView> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TodoListCubit, TodoListState>(
-      builder: (_, state) {
-        if (context.read<TodoListCubit>().loading) {
+    return StreamBuilder(
+      stream: context.read<TodoListCubit>().todos(),
+      builder: (_, snapshot) {
+        if (!snapshot.hasData) {
           return Center(
             child: Container(
               margin: const EdgeInsets.all(16.0),
@@ -24,7 +25,7 @@ class _TodoListViewState extends State<TodoListView> {
           );
         }
 
-        final list = context.read<TodoListCubit>().list;
+        final list = snapshot.data ?? [];
         return Material(
           color: Colors.white,
           clipBehavior: Clip.hardEdge,

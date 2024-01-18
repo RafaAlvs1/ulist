@@ -18,9 +18,9 @@ TodoListResponse fakeData = TodoListResponse.fromJson({
 
 class TodoRemoteDatasourceFake implements ITodoRemoteDatasource {
   @override
-  Future<Either<IFailure, TodoListResponse>> list(NoParams params) async {
+  Stream<TodoListResponse> list(NoParams params) async* {
     await Future.delayed(const Duration(seconds: 2));
-    return Right(fakeData);
+    yield fakeData;
   }
 
   @override

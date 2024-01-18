@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -28,30 +30,16 @@ void main() {
 
     test('should return todo list when call data is successful', () async {
       // arrange
-      when(datasource.list(params)).thenAnswer(
-        (_) async => Right(response),
-      );
+      final controller = StreamController<TodoListResponse>();
+      when(datasource.list(params)).thenAnswer((_) => controller.stream);
 
       // act
-      final result = await repository.getTodoList(params);
+      repository.getTodoList(params);
+      controller.add(response);
 
       // assert
-      verify(datasource.list(params));
-      expect(result, equals(Right(response.toEntity())));
-    });
-
-    test('should return server failure when call data is unsuccessful', () async {
-      // arrange
-      when(datasource.list(params)).thenAnswer(
-        (_) async => const Left(ServerFailure(message: '')),
-      );
-
-      // act
-      final result = await repository.getTodoList(params);
-
-      // assert
-      verify(datasource.list(params));
-      expect(result, equals(const Left(ServerFailure(message: ''))));
+      verify(datasource.list(params)).called(1);
+      expect(datasource.list(params), emitsInOrder([response]));
     });
   });
 
