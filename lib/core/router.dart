@@ -10,6 +10,7 @@ export 'package:go_router/go_router.dart';
 enum Routes {
   root("/"),
   home("/home"),
+  todoView("/todo-view"),
   ;
 
   const Routes(this.path);
@@ -37,6 +38,13 @@ class AppRoute {
         builder: (_, __) => BlocProvider(
           create: (_) => sl<HomeCubit>(),
           child: const MyHomePage()
+        ),
+      ),
+      GoRoute(
+        path: Routes.todoView.path,
+        name: Routes.todoView.name,
+        builder: (_, __) => TodoViewPage(
+          todo: __.extra as TodoEntity,
         ),
       ),
     ],

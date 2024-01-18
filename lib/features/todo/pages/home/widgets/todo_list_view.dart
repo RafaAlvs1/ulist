@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ulist_project/core/router.dart';
 import 'package:ulist_project/features/todo.dart';
-import 'package:ulist_project/features/todo/domain/entities/todo.dart';
 
 class TodoListView extends StatelessWidget {
   const TodoListView({Key? key}) : super(key: key);
@@ -22,13 +22,20 @@ class TodoListView extends StatelessWidget {
         final list = context.read<HomeCubit>().list;
         return Material(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(8.0),
           clipBehavior: Clip.hardEdge,
           child: ListView.builder(
             itemCount: list.length,
             itemBuilder: (_, index) {
               final todo = list[index];
-              return _buildItem(todo);
+              return InkWell(
+                child: _buildItem(todo),
+                onTap: () {
+                  context.push(
+                    Routes.todoView.path,
+                    extra: todo,
+                  );
+                },
+              );
             },
           ),
         );
@@ -37,37 +44,38 @@ class TodoListView extends StatelessWidget {
   }
 
   Widget _buildItem(TodoEntity todo) {
-    return Column(
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    todo.description ?? '',
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    style: const TextStyle(
-                      fontSize: 14.0,
-                    ),
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      constraints: const BoxConstraints(
+        minWidth: 40.0,
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  todo.description ?? '',
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 3,
+                  style: const TextStyle(
+                    fontSize: 14.0,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            IconButton(
-              icon: const Icon(
-                Icons.cancel,
-                color: Colors.red,
-              ),
-              onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.cancel,
+              color: Colors.red,
             ),
-          ],
-        ),
-        const Divider(),
-      ],
+            onPressed: () {},
+          ),
+        ],
+      ),
     );
   }
 }

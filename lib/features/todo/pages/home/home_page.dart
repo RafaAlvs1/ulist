@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ulist_project/core/router.dart';
+import 'package:ulist_project/core/widgets.dart';
 import 'package:ulist_project/features/todo.dart';
 
 import 'widgets/todo_list_view.dart';
@@ -28,6 +30,15 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
         child: const TodoListView(),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: AppRaisedButton(
+          labelText: 'Nova tarefa',
+          onPressed: () {
+            context.push(Routes.todoView.path);
+          },
+        ),
       ),
     );
   }
