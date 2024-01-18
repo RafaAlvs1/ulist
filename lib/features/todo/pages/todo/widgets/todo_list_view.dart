@@ -8,7 +8,7 @@ class TodoListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TodoListCubit, HomeState>(
+    return BlocBuilder<TodoListCubit, TodoListState>(
       builder: (_, state) {
         if (context.read<TodoListCubit>().loading) {
           return Center(
@@ -57,11 +57,20 @@ class TodoListView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
+                  todo.title ?? '',
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.0,
+                  ),
+                ),
+                Text(
                   todo.description ?? '',
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
                   style: const TextStyle(
-                    fontSize: 14.0,
+                    fontSize: 12.0,
                   ),
                 ),
               ],

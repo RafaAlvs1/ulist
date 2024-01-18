@@ -115,6 +115,24 @@ class MockITodoRepository extends _i1.Mock implements _i5.ITodoRepository {
           ),
         )),
       ) as _i6.Future<_i2.Either<_i7.IFailure, _i8.TodoListEntity>>);
+
+  @override
+  _i6.Future<_i2.Either<_i7.IFailure, bool>> saveTodo(
+          _i8.SaveTodoParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveTodo,
+          [params],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.IFailure, bool>>.value(
+            _FakeEither_0<_i7.IFailure, bool>(
+          this,
+          Invocation.method(
+            #saveTodo,
+            [params],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.IFailure, bool>>);
 }
 
 /// A class which mocks [ITodoRemoteDatasource].
@@ -144,6 +162,23 @@ class MockITodoRemoteDatasource extends _i1.Mock
           ),
         )),
       ) as _i6.Future<_i2.Either<_i7.IFailure, _i11.TodoListResponse>>);
+
+  @override
+  _i6.Future<_i2.Either<_i7.IFailure, bool>> save(_i8.SaveTodoParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #save,
+          [params],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.IFailure, bool>>.value(
+            _FakeEither_0<_i7.IFailure, bool>(
+          this,
+          Invocation.method(
+            #save,
+            [params],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.IFailure, bool>>);
 }
 
 /// A class which mocks [BuildContext].

@@ -18,23 +18,19 @@ void main() {
 
   setUp(() async {
     TestWidgetsFlutterBinding.ensureInitialized();
-    await serviceLocator(
-      isUnitTest: true,
-    );
+    await serviceLocator(isUnitTest: true);
     datasource = MockITodoRemoteDatasource();
     repository = TodoRepositoryImpl(datasource);
-    response = TodoListResponse.fromJson(JsonPath.successTodoList.json).toEntity();
   });
 
   group("todo", () {
     const params = NoParams();
+    final response = TodoListResponse.fromJson(JsonPath.successTodoList.json);
 
     test('should return todo list when call data is successful', () async {
       // arrange
       when(datasource.list(params)).thenAnswer(
-        (_) async => Right(
-          TodoListResponse.fromJson(JsonPath.successTodoList.json),
-        ),
+        (_) async => Right(response),
       );
 
       // act
@@ -42,22 +38,54 @@ void main() {
 
       // assert
       verify(datasource.list(params));
-      expect(result, equals(Right(response)));
+      expect(result, equals(Right(response.toEntity())));
     });
 
-    test(
-      'should return server failure when call data is unsuccessful',
-      () async {
-        // arrange
-        when(datasource.list(params)).thenAnswer((_) async => const Left(ServerFailure(message: '')));
+    test('should return server failure when call data is unsuccessful', () async {
+      // arrange
+      when(datasource.list(params)).thenAnswer(
+        (_) async => const Left(ServerFailure(message: '')),
+      );
 
-        // act
-        final result = await repository.getTodoList(params);
+      // act
+      final result = await repository.getTodoList(params);
 
-        // assert
-        verify(datasource.list(params));
-        expect(result, equals(const Left(ServerFailure(message: ''))));
-      },
-    );
+      // assert
+      verify(datasource.list(params));
+      expect(result, equals(const Left(ServerFailure(message: ''))));
+    });
+  });
+
+  group("save", () {
+    final params = SaveTodoParams.fromJson(JsonPath.todoInputExample.json);
+    const response = true;
+
+    test('should return true when call data is successful', () async {
+      // arrange
+      when(datasource.save(params)).thenAnswer(
+        (_) async => const Right(response),
+      );
+
+      // act
+      final result = await repository.saveTodo(params);
+
+      // assert
+      verify(datasource.save(params));
+      expect(result, equals(const Right(response)));
+    });
+
+    test('should return server failure when call data is unsuccessful', () async {
+      // arrange
+      when(datasource.save(params)).thenAnswer(
+        (_) async => const Left(ServerFailure(message: '')),
+      );
+
+      // act
+      final result = await repository.saveTodo(params);
+
+      // assert
+      verify(datasource.save(params));
+      expect(result, equals(const Left(ServerFailure(message: ''))));
+    });
   });
 }

@@ -1,31 +1,30 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ulist_project/core/errors.dart';
-import 'package:ulist_project/core/usecase.dart';
 import 'package:ulist_project/features/todo/domain/entities.dart';
 import 'package:ulist_project/features/todo/domain/usecases.dart';
 
-part 'todo_list_cubit.freezed.dart';
-part 'todo_list_state.dart';
+part 'edit_todo_cubit.freezed.dart';
+part 'edit_todo_state.dart';
 
-class TodoListCubit extends Cubit<TodoListState> {
-  final GetTodoListUsecase _usecase;
+class EditTodoCubit extends Cubit<EditTodoState> {
+  final SaveTodoUsecase _usecase;
 
-  TodoListCubit(this._usecase) : super(const _Init());
+  EditTodoCubit(this._usecase) : super(const _Init());
 
   bool loading = false;
-  List<TodoEntity> _list = [];
 
-  List<TodoEntity> get list {
-    final items = _list.toList();
-    return items;
-  }
-
-  Future<void> fetch() async {
+  Future<void> save(
+    String title,
+    String description,
+  ) async {
     emit(const _Loading());
     loading = true;
 
-    final data = await _usecase(const NoParams());
+    final data = await _usecase(SaveTodoParams(
+      title: title,
+      description: description,
+    ));
 
     data.fold(
       (l) {
@@ -39,7 +38,6 @@ class TodoListCubit extends Cubit<TodoListState> {
       },
       (r) {
         loading = false;
-        _list = r.data?.toList() ?? [];
         emit(const _Success());
       },
     );

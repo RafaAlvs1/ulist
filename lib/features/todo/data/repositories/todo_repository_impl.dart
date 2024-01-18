@@ -24,4 +24,14 @@ class TodoRepositoryImpl implements ITodoRepository {
       },
     );
   }
+
+  @override
+  Future<Either<IFailure, bool>> saveTodo(SaveTodoParams params) async {
+      final response = await _datasource.save(params);
+
+      return response.fold(
+        (failure) => Left(failure),
+        (response) => Right(response),
+      );
+  }
 }

@@ -3,6 +3,7 @@ import 'package:ulist_project/core/errors/failure.dart';
 import 'package:ulist_project/core/usecase/usecase.dart';
 import 'package:ulist_project/features/todo/data/datasources/todo_remote_datasource.dart';
 import 'package:ulist_project/features/todo/data/models/todo_list_response.dart';
+import 'package:ulist_project/features/todo/domain/entities/save_todo_params.dart';
 
 TodoListResponse fakeData = TodoListResponse.fromJson({
   "data": [
@@ -29,5 +30,11 @@ class TodoRemoteDatasourceFake implements ITodoRemoteDatasource {
   Future<Either<IFailure, TodoListResponse>> list(NoParams params) async {
     await Future.delayed(const Duration(seconds: 2));
     return Right(fakeData);
+  }
+
+  @override
+  Future<Either<IFailure, bool>> save(SaveTodoParams params) async {
+    await Future.delayed(const Duration(seconds: 2));
+    return const Right(true);
   }
 }

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'todo_list_cubit.dart';
+part of 'edit_todo_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$TodoListState {
+mixin _$EditTodoState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
@@ -69,16 +69,16 @@ mixin _$TodoListState {
 }
 
 /// @nodoc
-abstract class $TodoListStateCopyWith<$Res> {
-  factory $TodoListStateCopyWith(
-          TodoListState value, $Res Function(TodoListState) then) =
-      _$TodoListStateCopyWithImpl<$Res, TodoListState>;
+abstract class $EditTodoStateCopyWith<$Res> {
+  factory $EditTodoStateCopyWith(
+          EditTodoState value, $Res Function(EditTodoState) then) =
+      _$EditTodoStateCopyWithImpl<$Res, EditTodoState>;
 }
 
 /// @nodoc
-class _$TodoListStateCopyWithImpl<$Res, $Val extends TodoListState>
-    implements $TodoListStateCopyWith<$Res> {
-  _$TodoListStateCopyWithImpl(this._value, this._then);
+class _$EditTodoStateCopyWithImpl<$Res, $Val extends EditTodoState>
+    implements $EditTodoStateCopyWith<$Res> {
+  _$EditTodoStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +95,7 @@ abstract class _$$InitImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitImplCopyWithImpl<$Res>
-    extends _$TodoListStateCopyWithImpl<$Res, _$InitImpl>
+    extends _$EditTodoStateCopyWithImpl<$Res, _$InitImpl>
     implements _$$InitImplCopyWith<$Res> {
   __$$InitImplCopyWithImpl(_$InitImpl _value, $Res Function(_$InitImpl) _then)
       : super(_value, _then);
@@ -108,7 +108,7 @@ class _$InitImpl implements _Init {
 
   @override
   String toString() {
-    return 'TodoListState.init()';
+    return 'EditTodoState.init()';
   }
 
   @override
@@ -195,7 +195,7 @@ class _$InitImpl implements _Init {
   }
 }
 
-abstract class _Init implements TodoListState {
+abstract class _Init implements EditTodoState {
   const factory _Init() = _$InitImpl;
 }
 
@@ -208,7 +208,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$TodoListStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$EditTodoStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -222,7 +222,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'TodoListState.loading()';
+    return 'EditTodoState.loading()';
   }
 
   @override
@@ -309,7 +309,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements TodoListState {
+abstract class _Loading implements EditTodoState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -322,7 +322,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$TodoListStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$EditTodoStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
@@ -336,7 +336,7 @@ class _$SuccessImpl implements _Success {
 
   @override
   String toString() {
-    return 'TodoListState.success()';
+    return 'EditTodoState.success()';
   }
 
   @override
@@ -423,7 +423,7 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements TodoListState {
+abstract class _Success implements EditTodoState {
   const factory _Success() = _$SuccessImpl;
 }
 
@@ -438,7 +438,7 @@ abstract class _$$FailureImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FailureImplCopyWithImpl<$Res>
-    extends _$TodoListStateCopyWithImpl<$Res, _$FailureImpl>
+    extends _$EditTodoStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
       _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
@@ -475,7 +475,7 @@ class _$FailureImpl implements _Failure {
 
   @override
   String toString() {
-    return 'TodoListState.failure(title: $title, message: $message)';
+    return 'EditTodoState.failure(title: $title, message: $message)';
   }
 
   @override
@@ -571,7 +571,7 @@ class _$FailureImpl implements _Failure {
   }
 }
 
-abstract class _Failure implements TodoListState {
+abstract class _Failure implements EditTodoState {
   const factory _Failure(final String? title, final String message) =
       _$FailureImpl;
 

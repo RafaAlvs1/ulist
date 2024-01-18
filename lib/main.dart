@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,6 +22,10 @@ void main() {
     runApp(const MyApp());
   }, (error, stackTrace) async {
     print("### ::> ERROR");
-    print(error);
+    log(
+      "### ERROR ::> $error",
+      error: error,
+      stackTrace: stackTrace,
+    );
   });
 }

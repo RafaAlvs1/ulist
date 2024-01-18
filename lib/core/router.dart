@@ -37,14 +37,17 @@ class AppRoute {
         name: Routes.todoList.name,
         builder: (_, __) => BlocProvider(
           create: (_) => sl<TodoListCubit>(),
-          child: const TodoListPage()
+          child: const TodoListPage(),
         ),
       ),
       GoRoute(
         path: Routes.todoView.path,
         name: Routes.todoView.name,
-        builder: (_, __) => TodoViewPage(
-          todo: __.extra as TodoEntity,
+        builder: (_, __) => BlocProvider(
+          create: (_) => sl<EditTodoCubit>(),
+          child: TodoViewPage(
+            todo: __.extra as dynamic,
+          ),
         ),
       ),
     ],

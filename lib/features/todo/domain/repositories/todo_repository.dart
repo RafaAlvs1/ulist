@@ -5,4 +5,5 @@ import 'package:ulist_project/features/todo/domain/entities.dart';
 
 abstract class ITodoRepository {
   Future<Either<IFailure, TodoListEntity>> getTodoList(NoParams params);
+  Future<Either<IFailure, bool>> saveTodo(SaveTodoParams params);
 }
