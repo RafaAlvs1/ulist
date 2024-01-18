@@ -8,9 +8,9 @@ class TodoListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocBuilder<TodoListCubit, HomeState>(
       builder: (_, state) {
-        if (context.read<HomeCubit>().loading) {
+        if (context.read<TodoListCubit>().loading) {
           return Center(
             child: Container(
               margin: const EdgeInsets.all(16.0),
@@ -19,7 +19,7 @@ class TodoListView extends StatelessWidget {
           );
         }
 
-        final list = context.read<HomeCubit>().list;
+        final list = context.read<TodoListCubit>().list;
         return Material(
           color: Colors.white,
           clipBehavior: Clip.hardEdge,

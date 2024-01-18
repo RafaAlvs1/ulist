@@ -15,8 +15,8 @@ class TodoRepositoryImpl implements ITodoRepository {
     final response = await _datasource.list(params);
 
     return response.fold(
-          (failure) => Left(failure),
-          (response) {
+      (failure) => Left(failure),
+      (response) {
         if (response.data?.isEmpty ?? true) {
           return Left(NoDataFailure());
         }

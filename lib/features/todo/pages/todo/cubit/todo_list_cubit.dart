@@ -5,13 +5,13 @@ import 'package:ulist_project/core/usecase.dart';
 import 'package:ulist_project/features/todo/domain/entities.dart';
 import 'package:ulist_project/features/todo/domain/usecases.dart';
 
-part 'home_cubit.freezed.dart';
-part 'home_state.dart';
+part 'todo_list_cubit.freezed.dart';
+part 'todo_list_state.dart';
 
-class HomeCubit extends Cubit<HomeState> {
+class TodoListCubit extends Cubit<HomeState> {
   final GetTodoListUsecase _usecase;
 
-  HomeCubit(this._usecase) : super(const _Init());
+  TodoListCubit(this._usecase) : super(const _Init());
 
   bool loading = false;
   List<TodoEntity> _list = [];

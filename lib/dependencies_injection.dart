@@ -28,5 +28,5 @@ void _todo() {
   sl.registerLazySingleton(() => GetTodoListUsecase(sl()));
 
   /// Cubits
-  sl.registerFactory<HomeCubit>(() => HomeCubit(sl()));
+  sl.registerFactory<TodoListCubit>(() => TodoListCubit(sl()));
 }

@@ -6,18 +6,18 @@ import 'package:ulist_project/features/todo.dart';
 
 import 'widgets/todo_list_view.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class TodoListPage extends StatefulWidget {
+  const TodoListPage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<TodoListPage> createState() => _TodoListPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _TodoListPageState extends State<TodoListPage> {
   @override
   void initState() {
     super.initState();
-    context.read<HomeCubit>().fetch();
+    context.read<TodoListCubit>().fetch();
   }
 
   @override
