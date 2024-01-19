@@ -19,7 +19,7 @@ Future<void> serviceLocator({
 
 void _todo() {
   /// Datasources
-  sl.registerLazySingleton<ITodoRemoteDatasource>(() => TodoRemoteDatasourceFake());
+  sl.registerLazySingleton<ITodoRemoteDatasource>(() => TodoRemoteDatasourceFirebaseImpl(sl()));
 
   /// Repositories
   sl.registerLazySingleton<ITodoRepository>(() => TodoRepositoryImpl(sl()));

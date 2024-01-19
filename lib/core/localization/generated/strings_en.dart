@@ -23,5 +23,8 @@ class StringsEn extends Strings {
   String get todo_search => 'Search...';
 
   @override
+  String get todo_list_empty => 'The list is empty';
+
+  @override
   String get can_not_empty => 'Can not be empty.';
 }

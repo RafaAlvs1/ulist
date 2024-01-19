@@ -8,6 +8,7 @@ part 'todo_list_response.g.dart';
 class TodoListResponse with _$TodoListResponse {
   const TodoListResponse._();
 
+  // ignore: invalid_annotation_target
   @JsonSerializable(explicitToJson: true)
   const factory TodoListResponse({
     List<DataTodo>? data,

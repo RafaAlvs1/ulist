@@ -127,6 +127,12 @@ abstract class Strings {
   /// **'Search...'**
   String get todo_search;
 
+  /// No description provided for @todo_list_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'The list is empty'**
+  String get todo_list_empty;
+
   /// No description provided for @can_not_empty.
   ///
   /// In en, this message translates to:

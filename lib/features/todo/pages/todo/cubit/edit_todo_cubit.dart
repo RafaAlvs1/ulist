@@ -16,12 +16,14 @@ class EditTodoCubit extends Cubit<EditTodoState> {
 
   Future<void> save(
     String title,
-    String description,
-  ) async {
+    String description, [
+    String? id,
+  ]) async {
     emit(const _Loading());
     loading = true;
 
     final data = await _usecase(SaveTodoParams(
+      id: id,
       title: title,
       description: description,
     ));

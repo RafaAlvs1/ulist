@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ulist_project/core/localization.dart';
 import 'package:ulist_project/core/router.dart';
 import 'package:ulist_project/features/todo.dart';
 
@@ -37,7 +38,19 @@ class _TodoListViewState extends State<TodoListView> {
                 );
               }
 
-              var list = (snapshot.data ?? []).toList();
+              final list = (snapshot.data ?? []).toList();
+
+              if (list.isEmpty) {
+                return Center(
+                  child: Text(
+                    Strings.of(context)!.todo_list_empty,
+                    style: const TextStyle(
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                );
+              }
 
               if (searchText.isNotEmpty) {
                 final text = searchText.toLowerCase();

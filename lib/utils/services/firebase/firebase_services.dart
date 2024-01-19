@@ -1,3 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
+
+import 'firebase_options.dart';
+
 mixin FirebaseServices {
-  static Future<void> init() async {}
+  static Future<void> init() async {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  }
 }

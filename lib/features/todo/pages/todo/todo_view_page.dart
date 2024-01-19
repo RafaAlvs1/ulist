@@ -100,6 +100,7 @@ class _TodoViewPageState extends State<TodoViewPage> {
       context.read<EditTodoCubit>().save(
             _titleController.text,
             _descriptionController.text,
+            _todo.id,
           );
     }
   }

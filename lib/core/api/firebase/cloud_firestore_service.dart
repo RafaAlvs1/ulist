@@ -1,56 +1,67 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:ulist_project/core/errors.dart';
 
 import '../api_client.dart';
-import '../isolate_parser.dart';
 
 class CloudFirestoreService {
-  CloudFirestoreService({bool isUnitTest = false}) {}
+  CloudFirestoreService({bool isUnitTest = false});
 
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<Either<IFailure, T>> getList<T>(
+  Stream<T> getList<T>(
     String path, {
     required ResponseConverter<T> converter,
-    bool isIsolate = true,
-  }) async {
+  }) {
     try {
-      final snapshot = await _firestore.collection(path).get();
-      final json = {
-        "data": snapshot.docs.map((e) => e.data()).toList(),
-        "lenght": snapshot.docs.length,
-      };
+      final snapshot = _firestore.collection(path).snapshots();
+      return snapshot.map((event) {
+        return converter({
+          "data": event.docs.map((e) {
+            return {
+              ...e.data(),
+              "id": e.id,
+            };
+          }).toList(),
+          "length": event.docs.length,
+        });
+      });
+    } catch (e) {
+      throw ServerFailure(message: e.toString());
+    }
+  }
 
-      if (!isIsolate) {
-        return Right(converter(json));
-      }
-
-      final isolateParse = IsolateParser<T>(json, converter);
-      final result = await isolateParse.parseInBackground();
-      return Right(result);
+  Future<Either<IFailure, bool>> save<T>(
+    String path,
+    String? docId,
+    T value,
+  ) async {
+    try {
+      final doc = _firestore.collection(path).doc(docId);
+      await doc.set(
+        {
+          ...jsonDecode(jsonEncode(value)),
+          if (docId == null) "created_at": FieldValue.serverTimestamp(),
+          "updated_at": FieldValue.serverTimestamp(),
+        }..remove('id'),
+        SetOptions(merge: true),
+      );
+      return const Right(true);
     } catch (e) {
       return Left(ServerFailure(message: e.toString()));
     }
   }
 
-  Future<Either<IFailure, T>> getDoc<T>(
+  Future<Either<IFailure, bool>> delete<T>(
     String path,
-    String docId, {
-    required ResponseConverter<T> converter,
-    bool isIsolate = true,
-  }) async {
+    String docId,
+  ) async {
     try {
-      final snapshot = await _firestore.collection(path).doc(docId).get();
-      final json = snapshot.data() ?? {};
-
-      if (!isIsolate) {
-        return Right(converter(json));
-      }
-
-      final isolateParse = IsolateParser<T>(json, converter);
-      final result = await isolateParse.parseInBackground();
-      return Right(result);
+      final doc = _firestore.collection(path).doc(docId);
+      await doc.delete();
+      return const Right(true);
     } catch (e) {
       return Left(ServerFailure(message: e.toString()));
     }
