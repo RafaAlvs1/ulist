@@ -1,0 +1,9 @@
+{
+  "button_save": "Save",
+  "todo_edit_title": "New To-do",
+  "todo_list_title": "To-do list",
+  "todo_title": "Title",
+  "todo_description": "Description",
+  "todo_search": "Search...",
+  "can_not_empty": "Can not be empty."
+}

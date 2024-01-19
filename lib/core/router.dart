@@ -46,7 +46,7 @@ class AppRoute {
         builder: (_, __) => BlocProvider(
           create: (_) => sl<EditTodoCubit>(),
           child: TodoViewPage(
-            todo: __.extra as dynamic,
+            todo: TodoEntity.fromJson(__.extra as Map<String, dynamic>? ?? {}),
           ),
         ),
       ),

@@ -60,7 +60,7 @@ class _TodoListViewState extends State<TodoListView> {
                       onTap: () {
                         context.push(
                           Routes.todoView.path,
-                          extra: todo,
+                          extra: todo.toJson(),
                         );
                       },
                     );

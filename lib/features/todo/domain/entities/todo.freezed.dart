@@ -141,12 +141,17 @@ abstract class _TodoListEntity implements TodoListEntity {
       throw _privateConstructorUsedError;
 }
 
+TodoEntity _$TodoEntityFromJson(Map<String, dynamic> json) {
+  return _TodoEntity.fromJson(json);
+}
+
 /// @nodoc
 mixin _$TodoEntity {
   String? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $TodoEntityCopyWith<TodoEntity> get copyWith =>
       throw _privateConstructorUsedError;
@@ -239,9 +244,12 @@ class __$$TodoEntityImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$TodoEntityImpl extends _TodoEntity {
   const _$TodoEntityImpl({this.id, this.title, this.description}) : super._();
+
+  factory _$TodoEntityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TodoEntityImplFromJson(json);
 
   @override
   final String? id;
@@ -255,6 +263,13 @@ class _$TodoEntityImpl extends _TodoEntity {
   @pragma('vm:prefer-inline')
   _$$TodoEntityImplCopyWith<_$TodoEntityImpl> get copyWith =>
       __$$TodoEntityImplCopyWithImpl<_$TodoEntityImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TodoEntityImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _TodoEntity extends TodoEntity {
@@ -263,6 +278,9 @@ abstract class _TodoEntity extends TodoEntity {
       final String? title,
       final String? description}) = _$TodoEntityImpl;
   const _TodoEntity._() : super._();
+
+  factory _TodoEntity.fromJson(Map<String, dynamic> json) =
+      _$TodoEntityImpl.fromJson;
 
   @override
   String? get id;

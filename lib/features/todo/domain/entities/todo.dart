@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'todo.freezed.dart';
+part 'todo.g.dart';
 
 @freezed
 class TodoListEntity with _$TodoListEntity {
@@ -19,6 +20,8 @@ class TodoEntity extends Equatable with _$TodoEntity {
     String? title,
     String? description,
   }) = _TodoEntity;
+
+  factory TodoEntity.fromJson(Map<String, dynamic> json) => _$TodoEntityFromJson(json);
 
   @override
   List<Object?> get props => [

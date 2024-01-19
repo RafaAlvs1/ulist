@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ulist_project/core/localization.dart';
 import 'package:ulist_project/core/router.dart';
 import 'package:ulist_project/core/widgets.dart';
 import 'package:ulist_project/features/todo.dart';
@@ -15,12 +16,6 @@ class TodoListPage extends StatefulWidget {
 }
 
 class _TodoListPageState extends State<TodoListPage> {
-  @override
-  void initState() {
-    super.initState();
-    // context.read<TodoListCubit>().fetch();
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocListener<TodoListCubit,TodoListState>(
@@ -39,7 +34,7 @@ class _TodoListPageState extends State<TodoListPage> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('TODO List'),
+          title: Text(Strings.of(context)!.todo_list_title),
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         ),
         body: Container(
@@ -49,7 +44,7 @@ class _TodoListPageState extends State<TodoListPage> {
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(8.0),
           child: AppRaisedButton(
-            labelText: 'Nova tarefa',
+            labelText: Strings.of(context)!.todo_edit_title,
             onPressed: () {
               context.push(Routes.todoView.path);
             },

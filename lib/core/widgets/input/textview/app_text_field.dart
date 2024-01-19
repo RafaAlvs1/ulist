@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import '../input_theme.dart';
+import 'package:ulist_project/core/localization.dart';
 
 class AppTextField extends StatelessWidget {
   final TextEditingController? controller;
@@ -75,8 +74,10 @@ class AppTextField extends StatelessWidget {
           prefixIcon: _buildIcon(prefixIcon),
           enabled: enabled ?? true,
         ),
-        validator:
-            !required ? null : (onValidator ?? (value) => (value?.isEmpty ?? true) ? InputTheme.messageRequired : null),
+        validator: !required
+            ? null
+            : (onValidator ??
+                (value) => (value?.isEmpty ?? true) ? Strings.of(context)!.can_not_empty : null),
         onChanged: onChanged,
         onFieldSubmitted: onFieldSubmitted,
       ),

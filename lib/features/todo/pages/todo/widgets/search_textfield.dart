@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ulist_project/core/localization.dart';
 import 'package:ulist_project/core/widgets.dart';
 
 class SearchTextField extends StatefulWidget {
@@ -29,7 +30,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
     return AppTextField(
       controller: _controller,
       prefixIcon: const Icon(Icons.search),
-      placeholder: 'Procurar tarefa...',
+      placeholder: Strings.of(context)!.todo_search,
       onChanged: widget.onChanged,
       textInputAction: TextInputAction.done,
       onFieldSubmitted: widget.onChanged,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ulist_project/core/localization.dart';
 import 'package:ulist_project/core/router.dart';
 import 'package:ulist_project/core/widgets.dart';
 import 'package:ulist_project/features/todo/domain/entities.dart';
@@ -51,7 +52,7 @@ class _TodoViewPageState extends State<TodoViewPage> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(_todo.title ?? 'Tarefa'),
+          title: Text(_todo.title ?? Strings.of(context)!.todo_edit_title),
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         ),
         body: Column(
@@ -65,12 +66,12 @@ class _TodoViewPageState extends State<TodoViewPage> {
                     children: [
                       AppTextField(
                         controller: _titleController,
-                        labelText: 'Título',
+                        labelText: Strings.of(context)!.todo_title,
                       ),
                       AppTextField(
                         controller: _descriptionController,
                         maxLines: 3,
-                        labelText: 'Descrição',
+                        labelText: Strings.of(context)!.todo_description,
                         textInputAction: TextInputAction.newline,
                         onFieldSubmitted: (text) => _submit(),
                       ),
@@ -83,7 +84,7 @@ class _TodoViewPageState extends State<TodoViewPage> {
               padding: const EdgeInsets.all(8.0),
               child: AppRaisedButton(
                 width: double.infinity,
-                labelText: 'Salvar',
+                labelText: Strings.of(context)!.button_save,
                 onPressed: _submit,
               ),
             ),

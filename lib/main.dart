@@ -21,7 +21,6 @@ void main() {
 
     runApp(const MyApp());
   }, (error, stackTrace) async {
-    print("### ::> ERROR");
     log(
       "### ERROR ::> $error",
       error: error,
