@@ -1,16 +1,25 @@
-# ulist_project
+<br>
 
-A new Flutter project.
+# uList Todo App
+
+This app is to show some of my experience with the Flutter.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+- Clone this project
+- Run `flutter pub get`
+- Run `flutter gen-l10n` to generate localization files
+- Run `dart run build_runner build --delete-conflicting-outputs` to generate freezes files
+- Run Test `flutter test`
+- Run the app `flutter run`
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Feature
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [x] BLoC State Management
+- [x] Clean Architecture
+- [x] Unit Test
+- [x] Support for Multi-Language
+- [x] Fake and Firebase Database
+- [x] Routing System using [Go Router](https://pub.dev/packages/go_router)
+- [x] Dependency Injection with [Get It](https://pub.dev/packages/get_it)
